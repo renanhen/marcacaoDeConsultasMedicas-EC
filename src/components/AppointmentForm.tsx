@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { Button, Input, Text } from 'react-native-elements';
 import styled from 'styled-components/native';
+import { Button, Input, Text } from 'react-native-elements';
+import { Platform, View, TouchableOpacity } from 'react-native';
 import theme from '../styles/theme';
-//import { Doctor } from '../types';
 import { Doctor } from '../types/doctors';
+import { Appointment } from '../types/appointments';
+
 const doctors: Doctor[] = [
    {
       id: '1',
@@ -68,7 +69,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ onSubmit }) => {
    const handleDateChange = (text: string) => {
       // Remove todos os caracteres não numéricos
       const numbers = text.replace(/\D/g, '');
-
+      
       // Formata a data enquanto digita
       let formattedDate = '';
       if (numbers.length > 0) {
@@ -107,7 +108,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ onSubmit }) => {
    };
 
    const isTimeSlotAvailable = (time: string) => {
-      // Aqui você pode adicionar lógica para verificar se o horário está disponível (Faremos isto nas próximas aulas)
+      // Aqui você pode adicionar lógica para verificar se o horário está disponível
       // Por exemplo, verificar se já existe uma consulta agendada para este horário
       return true;
    };
@@ -201,7 +202,7 @@ const DoctorList = styled.ScrollView`
   margin-bottom: ${theme.spacing.large}px;
 `;
 
-const DoctorCard = styled(TouchableOpacity) <{ selected: boolean }>`
+const DoctorCard = styled(TouchableOpacity)<{ selected: boolean }>`
   flex-direction: row;
   align-items: center;
   padding: ${theme.spacing.medium}px;
@@ -254,33 +255,33 @@ const TimeSlotsGrid = styled.View`
   gap: ${theme.spacing.small}px;
 `;
 
-const TimeSlotButton = styled(TouchableOpacity) <{ selected: boolean; disabled: boolean }>`
-  background-color: ${(props: { selected: boolean; disabled: boolean }) =>
-      props.disabled
-         ? theme.colors.background
-         : props.selected
-            ? theme.colors.primary
-            : theme.colors.white};
+const TimeSlotButton = styled(TouchableOpacity)<{ selected: boolean; disabled: boolean }>`
+  background-color: ${(props: { selected: boolean; disabled: boolean }) => 
+    props.disabled 
+      ? theme.colors.background 
+      : props.selected 
+        ? theme.colors.primary 
+        : theme.colors.white};
   padding: ${theme.spacing.small}px ${theme.spacing.medium}px;
   border-radius: 8px;
   border-width: 1px;
-  border-color: ${(props: { selected: boolean; disabled: boolean }) =>
-      props.disabled
-         ? theme.colors.background
-         : props.selected
-            ? theme.colors.primary
-            : theme.colors.text};
+  border-color: ${(props: { selected: boolean; disabled: boolean }) => 
+    props.disabled 
+      ? theme.colors.background 
+      : props.selected 
+        ? theme.colors.primary 
+        : theme.colors.text};
   opacity: ${(props: { disabled: boolean }) => props.disabled ? 0.5 : 1};
 `;
 
-const TimeSlotText = styled(Text) <{ selected: boolean; disabled: boolean }>`
+const TimeSlotText = styled(Text)<{ selected: boolean; disabled: boolean }>`
   font-size: ${theme.typography.body.fontSize}px;
-  color: ${(props: { selected: boolean; disabled: boolean }) =>
-      props.disabled
-         ? theme.colors.text
-         : props.selected
-            ? theme.colors.white
-            : theme.colors.text};
+  color: ${(props: { selected: boolean; disabled: boolean }) => 
+    props.disabled 
+      ? theme.colors.text 
+      : props.selected 
+        ? theme.colors.white 
+        : theme.colors.text};
 `;
 
 const InputContainer = {
@@ -294,4 +295,4 @@ const SubmitButton = styled(Button)`
   margin-top: ${theme.spacing.large}px;
 `;
 
-export default AppointmentForm;  
+export default AppointmentForm; 
