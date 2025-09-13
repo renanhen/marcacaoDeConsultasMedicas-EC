@@ -4,7 +4,7 @@ import { Button, Input } from 'react-native-elements';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../../components/Header';
-import { Container, ErrorText, SectionTitle, styles, Title } from './styles';
+import { Container, styles, Title } from './styles';
 import { CreateAppointmentScreenProps } from './types';
 import { Doctor, useDoctors } from './hooks/useDoctors';
 import { useAppointments } from './hooks/useAppointments';
