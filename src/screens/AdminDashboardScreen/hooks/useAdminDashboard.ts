@@ -116,7 +116,11 @@ export const useAdminDashboard = () => {
   }, [users]);
 
   // Carrega os dados quando a tela entra em foco
-  useFocusEffect(loadData);
+useFocusEffect(
+  useCallback(() => {
+    loadData(); // chamando async dentro de uma função normal
+  }, [loadData])
+);
 
   return {
     // Estados
