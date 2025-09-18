@@ -143,4 +143,4 @@ Se você encontrar algum problema ou tiver sugestões, por favor abra uma issue 
 
 ---
 
-Desenvolvido por Professor Hete Caetano e compartilhado com alunos de TDS 
+Desenvolvido pelo equipe Rose da turma 3ECR 
